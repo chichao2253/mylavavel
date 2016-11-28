@@ -153,5 +153,36 @@ class StudentController extends Controller
    		$data=$request->input('Student');
    		var_dump($data);
    }
-   
+   public function update (Request $request,$id){
+   	$student= Student::find($id);
+   	if($request->isMethod('POST')){
+   		$data= $request->input ('Student');
+   		$student->name=$data['name'];
+   		$student->age=$data['age'];
+   		$student->sex=$data['sex'];
+
+   		if($student->save()){
+   				return redirect('index')->with('success','修改成功');
+   			}else{
+   				return redirect()->back();
+   			}
+   	}
+   	return view ('student.update',[
+   		'student'=>$student
+   	]);
+   }
+   public function detail($id){
+   		$student= Student::find($id);
+   		return view('student.detail',[
+   		'student'=>$student
+   	]);
+   }
+   public function delete($id){
+   		$student= Student::find($id);
+   		if($student ->delete()){
+   			return redirect('index')->with('success','删除成功');
+   		}else{
+   			return redirect('index')->with('success','删除失败');
+   		}
+   }
 }

@@ -5,7 +5,7 @@
 
         <div class="col-sm-5">
             <input type="text" name="Student[name]"
-                   value="{{old('Student')['name']}}"
+                   value="{{old('Student')['name']?old('Student')['name']:$student->name}}"
                    class="form-control" id="name" placeholder="请输入学生姓名">
         </div>
         <div class="col-sm-5">
@@ -17,7 +17,7 @@
 
         <div class="col-sm-5">
             <input type="text" name="Student[age]"
-                   value="{{old('Student')['age']}}"
+                   value="{{old('Student')['age']?old('Student')['age']:$student->age}}"
                    class="form-control" id="age" placeholder="请输入学生年龄">
         </div>
         <div class="col-sm-5">
@@ -30,7 +30,7 @@
         <div class="col-sm-5"> 
         	@foreach($student->sex() as $ind => $val)          
                 <label class="radio-inline">
-                    <input type="radio" name="Student[sex]" value="{{$ind}}">{{$val}}                           
+                    <input type="radio" name="Student[sex]" {{isset($student->sex) && $student->sex==$ind ? 'checked' : ''}} value="{{$ind}}">{{$val}}                           
                 </label>    
             @endforeach       
         </div>
