@@ -47,6 +47,8 @@ Route::group(['middleware'=>['web']],function(){
 });
 Route::get('response','StudentController@response');
 Route::get('index','StudentController@index');
+Route::any('student/create','StudentController@create');
+Route::any('student/save','StudentController@save');
 
 
 	/*
@@ -88,7 +90,10 @@ Route::get('index','StudentController@index');
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+    Route::get('index','StudentController@index');
+	Route::any('student/create','StudentController@create');
+	Route::any('student/save','StudentController@save');
+
 });
 
 Route::group(['middleware' => 'web'], function () {

@@ -9,7 +9,7 @@ class Student extends Model{
 	
 	protected $table = 'student';
 	//指定id
-
+	
 	protected $primaryKey = 'id';
 	//指定允许批量赋值的方法
 	protected $fillable=['name','age'];
@@ -20,4 +20,6 @@ class Student extends Model{
 	protected function asDatetime($val){
 		return $val;
 	}
+	
+	public $timestamps=true;
 }

@@ -112,7 +112,25 @@ class StudentController extends Controller
    		return response()->json($data);
    }
    public function index(){
-   	return view('student.index');
+   	
+   	$students=Student::paginate(4);   	
+   	return view('student.index',[
+   		'students'=>$students
+   	]);
+   }
+   public function create(Request $request){
+   		if($request->isMethod('POST')){
+   			if(Student::create($request->input('Student'))){
+   				return redirect('index')->with('success','添加成功');
+   			}else{
+   				return redirect()->back();
+   			}
+   		}
+   		return view('student.create');
+   }
+   public function save(Request $request){
+   		$data=$request->input('Student');
+   		var_dump($data);
    }
    
 }

@@ -1,17 +1,15 @@
 <form class="form-horizontal" method="post" action="">
-
-    {{ csrf_field() }}
-
+	<input type="hidden" name="_token" value="{{csrf_token()}}"/> 
     <div class="form-group">
         <label for="name" class="col-sm-2 control-label">姓名</label>
 
         <div class="col-sm-5">
             <input type="text" name="Student[name]"
-                   value="{{ old('Student')['name'] ? old('Student')['name'] : $student->name }}"
+                   value=""
                    class="form-control" id="name" placeholder="请输入学生姓名">
         </div>
         <div class="col-sm-5">
-            <p class="form-control-static text-danger">{{ $errors->first('Student.name') }}</p>
+            <p class="form-control-static text-danger"></p>
         </div>
     </div>
     <div class="form-group">
@@ -19,27 +17,26 @@
 
         <div class="col-sm-5">
             <input type="text" name="Student[age]"
-                   value="{{ old('Student')['age'] ?  old('Student')['age'] : $student->age }}"
+                   value=""
                    class="form-control" id="age" placeholder="请输入学生年龄">
         </div>
         <div class="col-sm-5">
-            <p class="form-control-static text-danger">{{ $errors->first('Student.age') }}</p>
+            <p class="form-control-static text-danger"></p>
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-2 control-label">性别</label>
 
         <div class="col-sm-5">
-            @foreach($student->sex() as $ind=>$val)
+           
                 <label class="radio-inline">
                     <input type="radio" name="Student[sex]"
-                           {{ isset($student->sex) && $student->sex == $ind ? 'checked' : ''  }}
-                           value="{{ $ind }}"> {{ $val }}
+                           
                 </label>
-            @endforeach
+           
         </div>
         <div class="col-sm-5">
-            <p class="form-control-static text-danger">{{ $errors->first('Student.sex') }}</p>
+            <p class="form-control-static text-danger"></p>
         </div>
     </div>
     <div class="form-group">
