@@ -46,6 +46,7 @@ Route::group(['middleware'=>['web']],function(){
 	Route::any('session2','StudentController@session2');
 });
 Route::get('response','StudentController@response');
+Route::get('index','StudentController@index');
 
 
 	/*

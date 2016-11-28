@@ -103,13 +103,16 @@ class StudentController extends Controller
    		$res=Session::all();
    		dd($res);
    }
-   public function respose(){
+   public function response(){
    		$data=[
    			'errCode'=>1,
    			'errMsg'=>'success',
    			'data'=>'chichao',
    		];
-   		return respose->json($data);
+   		return response()->json($data);
+   }
+   public function index(){
+   	return view('student.index');
    }
    
 }
