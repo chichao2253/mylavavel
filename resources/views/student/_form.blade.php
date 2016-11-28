@@ -5,11 +5,11 @@
 
         <div class="col-sm-5">
             <input type="text" name="Student[name]"
-                   value=""
+                   value="{{old('Student')['name']}}"
                    class="form-control" id="name" placeholder="请输入学生姓名">
         </div>
         <div class="col-sm-5">
-            <p class="form-control-static text-danger"></p>
+            <p class="form-control-static text-danger">{{$errors->first('Student.name')}}</p>
         </div>
     </div>
     <div class="form-group">
@@ -17,26 +17,25 @@
 
         <div class="col-sm-5">
             <input type="text" name="Student[age]"
-                   value=""
+                   value="{{old('Student')['age']}}"
                    class="form-control" id="age" placeholder="请输入学生年龄">
         </div>
         <div class="col-sm-5">
-            <p class="form-control-static text-danger"></p>
+            <p class="form-control-static text-danger">{{$errors->first('Student.age')}}</p>
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-2 control-label">性别</label>
 
-        <div class="col-sm-5">
-           
+        <div class="col-sm-5"> 
+        	@foreach($student->sex() as $ind => $val)          
                 <label class="radio-inline">
-                    <input type="radio" name="Student[sex]"
-                           
-                </label>
-           
+                    <input type="radio" name="Student[sex]" value="{{$ind}}">{{$val}}                           
+                </label>    
+            @endforeach       
         </div>
         <div class="col-sm-5">
-            <p class="form-control-static text-danger"></p>
+            <p class="form-control-static text-danger">{{$errors->first('Student.sex')}}</p>
         </div>
     </div>
     <div class="form-group">
