@@ -98,7 +98,7 @@ Route::group(['middleware' => ['web']], function () {
 	Route::any('student/delete/{id}','StudentController@delete');
 
 });
-
+	Route::any('upload','StudentController@upload'); 
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 

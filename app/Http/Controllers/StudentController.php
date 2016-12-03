@@ -185,4 +185,7 @@ class StudentController extends Controller
    			return redirect('index')->with('success','删除失败');
    		}
    }
+   public function upload(){
+   	return  "upload";
+   }
 }
